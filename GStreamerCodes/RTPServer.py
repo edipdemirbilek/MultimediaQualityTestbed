@@ -17,26 +17,18 @@ import time
 import RTPStats
 
 REMOTE_HOST = '10.10.10.11'
-#REMOTE_HOST = '207.162.10.193'
-#REMOTE_HOST = '127.0.0.1'
-#WRITE_VIDEO_CAPS = '/home/labo/Dropbox/INRS/2016Winter/CAPS/video.caps'
-#WRITE_AUDIO_CAPS = '/home/labo/Dropbox/INRS/2016Winter/CAPS/audio.caps'
 
 mainloop = gobject.MainLoop()
 pipeline = gst.Pipeline.new('server')
 bus = pipeline.get_bus()
 
 filesource = gst.ElementFactory.make("filesrc", "file-source")
-#filesource.set_property('location', "/home/edipdemirbilek/Desktop/Output/ntia_HeadShoulders-Female15_h264_720p_baseline_fps25_q23_nr999_amrwb_m08.3gp")
-#filesource.set_property('location', "/home/labo/Dropbox/INRS/2015 Fall/Phase2/MVI_2501_h264_amrwb_720p_LQ.3gp")
-#filesource.set_property('location', "/home/labo/Dropbox/INRS/2016Winter/VideoFiles/ntia_HeadShoulders-Female15_h264_720p_baseline_fps25_q23_nr999_amrwb_m08.3gp")
 
 filesource.set_property('location', sys.argv[1])
 statsFile=sys.argv[2]
 
 WRITE_VIDEO_CAPS = sys.argv[3]
 WRITE_AUDIO_CAPS = sys.argv[4]
-
 
 dvdemux = gst.ElementFactory.make("qtdemux", "dvdemux")
 
