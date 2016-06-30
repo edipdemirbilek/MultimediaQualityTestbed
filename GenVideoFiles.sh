@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-inputfile=/home/edipdemirbilek/Desktop/Input/ntia_HeadShoulders-Female15_original.avi
-outputFilePrefix=/home/edipdemirbilek/Desktop/Output/ntia_HeadShoulders-Female15_h264_720p_baseline
-logFile=/home/edipdemirbilek/Desktop/Output/output.log
+inputfile=<ReferenceVideoDirectory>/ntia_HeadShoulders-Female15_original.avi
+outputFilePrefix=<OutputVideoDirectory>/ntia_HeadShoulders-Female15_h264_720p_baseline
+logFile=<LogDirectory>/output.log
 
 aNR=( 999 0 )
 aQuant=( 23 27 31 35 )
