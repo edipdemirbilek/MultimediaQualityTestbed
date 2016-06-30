@@ -14,10 +14,6 @@ import RTPStats
 import sys
 
 REMOTE_HOST = '10.10.10.12'
-#REMOTE_HOST = '192.168.10.105'
-#REMOTE_HOST = '127.0.0.1'
-#CAPS_DIR="/home/edipdemirbilek/Dropbox/INRS/2016Winter/Python/"
-#CAPS_DIR="/home/labo/Dropbox/INRS/2016Winter/CAPS/"
 
 mainloop = gobject.MainLoop()
 pipeline = gst.Pipeline.new('client')
@@ -32,8 +28,6 @@ vudpsrc_rtpin.set_property('port', 5000)
 
 vCapsFile=sys.argv[3]
 aCapsFile=sys.argv[4]
-#vcaps = open(CAPS_DIR+"video.caps", 'r').read()
-#acaps = open(CAPS_DIR+"audio.caps", 'r').read()
 vcaps = open(vCapsFile, 'r').read()
 acaps = open(aCapsFile, 'r').read()
 
@@ -78,10 +72,6 @@ queuea = gst.ElementFactory.make("queue", "queuea")
 
 qtmux = gst.ElementFactory.make("qtmux", "qtmux")
 filesink = gst.ElementFactory.make("filesink", "filesink")
-#filesink.set_property("location", "/home/edipdemirbilek/Desktop/Captured/Captured_Python.3gp")
-#filesink.set_property("location", "/home/edipdemirbilek/Desktop/Captured/BBB.3gp")
-#filesink.set_property("location", "/home/labo/Desktop/BBB.3gp")
-#filesink.set_property("location", "/home/labo/Desktop/BBB_new.3gp")
 
 filesink.set_property('location', sys.argv[1])
 statsFile=sys.argv[2]
@@ -114,10 +104,6 @@ pipeline.add(filesink)
 #pipeline.add(autoaudiosink)
 
 def pad_added_cb(rtpbin, pad, depay):
-    #print "Pad Added entry. Template: " +str(pad.get_property("template").name_template)
-    #print "Pad name: " +str(pad.get_name())  
-    #print "Depay name: "+str(depay.get_name())
-    
     if pad.get_name().startswith("recv_rtp_src_0") and depay.get_name().startswith("rtph264depay"):
         print "CLIENT: Linking video depay"
         depay_pad = rtph264depay.get_static_pad("sink")
