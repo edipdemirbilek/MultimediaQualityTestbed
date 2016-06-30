@@ -6,9 +6,9 @@ DELAY=0ms
 JITTER=0ms
 BW=10Mbps
 
-serverInputFilePrefix=/home/labo/Dropbox/INRS/2016Winter/VideoFiles/ntia_HeadShoulders-Female15_h264_720p_baseline
+serverInputFilePrefix=<InputVideoFileDirectory>/ntia_HeadShoulders-Female15_h264_720p_baseline
 
-clientOutputFilePrefix=/home/labo/Desktop/Output/ntia_HeadShoulders-Female15_h264_720p_baseline
+clientOutputFilePrefix=<OutputFileDirectory>/ntia_HeadShoulders-Female15_h264_720p_baseline
 
 #aPLR=(0)
 aPLR=(0 0.1 0.2 0.5 1 2 5 10)
@@ -64,8 +64,8 @@ do
 				pkill -9 -e -f python
 				ssh $ip pkill -9 -e -f python
 
-				server="/home/labo/Dropbox/INRS/2016Winter/Python/RTPServer.py $serverFile $serverStatsFile $serverVCapsFile $serverACapsFile"
-				client="/home/labo/Dropbox/INRS/2016Winter/Python/RTPClient.py $clientFile $clientStatsFile $clientVCapsFile $clientACapsFile"
+				server="<GStreamerCodeDirectory>/RTPServer.py $serverFile $serverStatsFile $serverVCapsFile $serverACapsFile"
+				client="<GStreamerCodeDirectory>/RTPClient.py $clientFile $clientStatsFile $clientVCapsFile $clientACapsFile"
 
 				ssh $ip sudo /sbin/tc qdisc del dev eth1 root
 				ssh $ip sudo /sbin/tc qdisc add dev eth1 root handle 1:1 netem delay $DELAY $JITTER
@@ -73,8 +73,8 @@ do
 				ssh $ip sudo /sbin/tc qdisc add dev eth1 parent 10:1 handle 20:1 htb default 1
 				ssh $ip sudo /sbin/tc qdisc show
 
-				python $client >> /home/labo/Desktop/Output/output.log &
-				ssh $ip python $server  >> /home/labo/Desktop/Output/output.log &
+				python $client >> <OutputLogDirectory>/output.log &
+				ssh $ip python $server  >> <OutputLogDirectory>/output.log &
 				
 
 				sleep 50
