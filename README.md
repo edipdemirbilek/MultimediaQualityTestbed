@@ -10,4 +10,6 @@ ConfAndStream.sh: This scripts stream the InputVideoFiles from Server to Client 
 
 GStreamerCodes Folder: GStremaer RTP Server and RTP Client Codes. In addition to the streaming, they also collect the detailed RTCP statistics and save them to file system. 
 
-[1] Demirbilek, Edip, and Jean-Charles Grégoire. “The INRS Audiovisual Quality Dataset." 2016 ACM Multimedia Conference (accepted).
+[1] Demirbilek, Edip, and Jean-Charles Grégoire. “The INRS Audiovisual Quality Dataset." 2016 ACM Multimedia Conference.
+
+[2] Edip Demirbilek and Jean-Charles Grégoire. Multimedia communication quality assessment testbeds. arXiv preprint arXiv:1609.06612, (2016).
