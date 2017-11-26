@@ -64,8 +64,8 @@ do
 				pkill -9 -e -f python
 				ssh $ip pkill -9 -e -f python
 
-				server="<GStreamerCodeDirectory>/RTPServer.py $serverFile $serverStatsFile $serverVCapsFile $serverACapsFile"
-				client="<GStreamerCodeDirectory>/RTPClient.py $clientFile $clientStatsFile $clientVCapsFile $clientACapsFile"
+				server="GStreamer/RTPServer.py $serverFile $serverStatsFile $serverVCapsFile $serverACapsFile"
+				client="GStreamer/RTPClient.py $clientFile $clientStatsFile $clientVCapsFile $clientACapsFile"
 
 				ssh $ip sudo /sbin/tc qdisc del dev eth1 root
 				ssh $ip sudo /sbin/tc qdisc add dev eth1 root handle 1:1 netem delay $DELAY $JITTER
